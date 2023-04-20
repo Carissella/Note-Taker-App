@@ -1,7 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const uuid = require("uuid");
-const router = express.Router();
+const router = require('express').Router();
 
 router.get("/notes", (req, res) => {
     fs.readFile("./Develop/db/db.json", "utf8", (err, data) => {
@@ -12,7 +11,6 @@ router.get("/notes", (req, res) => {
 });
 
 router.post("/notes", (req, res) => {
-    const newNoteId = uuid.v4();
     const newNote = {
         id: newNoteId,
         title: req.body.title,
@@ -31,4 +29,5 @@ router.delete("/notes/:id", (req, res) => {
     fs.writeFileSync("./Develop/db/db.json", JSON.stringify(updatedNotes));
     res.join(updatedNotes);
 })
-Module.exports = router;
+
+module.exports = router;

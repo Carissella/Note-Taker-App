@@ -1,13 +1,13 @@
 const express = require("express");
 const path = require("path");
-const htmlRoute = require("./Develop/routes/htmlRoute");
-const apiRoute = require("./Develop/routes/apiRoute");
+const htmlRoute = require("./routes/htmlRoute");
+const apiRoute = require("./routes/apiRoute");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.static("Develop/public"));
+app.use(express.static("public"));
 app.use("/", htmlRoute);
 app.use("/api", apiRoute);
 
